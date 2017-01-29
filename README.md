@@ -8,7 +8,7 @@ This is always going to be a work in progress and it is going to adapt to whatev
 
 Clarity, Readability & Convention:
 ----------------------------------
-- Always use a Linter such as [eubocop](https://github.com/bbatsov/rubocop).
+- Always use a Linter such as [rubocop](https://github.com/bbatsov/rubocop).
 - Use the Syntastic plugin for vim to work with Rubocop.
 - Method SHOULD NOT be long than 8-9 lines. If they do, then you are doing something wrong.
 - Classes should not be longer than 100-120 lines. If they do, then you are doing something wrong.
@@ -17,30 +17,30 @@ Clarity, Readability & Convention:
 - For active record where querying for an attribute in array pass it a hash instead of writing a string where query
 - Prefer single-quoted strings when you don't need string interpolation or special symbols.
 - Defining  and calling methods should use parenthesis
-```ruby
-def hello(name)
-  puts "#{name}"
-end
+  ```ruby
+  def hello(name)
+    puts "#{name}"
+  end
 
-hello('Sabri')
-```
+  hello('Sabri')
+  ```
 - Always use &&, ||, ! instead of language words like and, or, not
 - Use CamelCase for classes and modules, snake_case for variables and methods, SCREAMING_SNAKE_CASE for constants.
 - Break down long chain method calls for readability
 - Methods that return boolean should end with a “?”
 - Methods that perform some permanent or potentially dangerous change should ending in "!"
 - Use Hash params instead of splat operator (*args)
-```ruby
-def hello(options = {})
-  first_name  = options[:first_name]
-  middle_name = options[:middle_name]
-  last_name   = options[:last_name]
+  ```ruby
+  def hello(options = {})
+    first_name  = options[:first_name]
+    middle_name = options[:middle_name]
+    last_name   = options[:last_name]
 
-  puts "Hello #{first_name} #{middle_name} #{last_name}"
-end
+    puts "Hello #{first_name} #{middle_name} #{last_name}"
+  end
 
-hello(first_name: 'Sabri', middle_name: 'Saaber', last_name: 'Sabri')
-```
+  hello(first_name: 'Sabri', middle_name: 'Saaber', last_name: 'Sabri')
+  ```
 - Use `each`, not `for`, for iteration.
 - Prefer `private` over `protected` for non-public `attr_reader`s, `attr_writer`s, and `attr_accessor`s.
 
@@ -63,68 +63,70 @@ Models:
 - Meaningful but short names
 - Feel free to introduce non ActiveRecord models. If validations are needed, use [ActiveAttr](https://github.com/cgriego/active_attr) gem.
 
-```ruby
-class User < ActiveRecord::Base
-  include Something::Something
+The following model structure is to be used in all our models:
 
-  # Constants
-  ERRORS = { warning: 'Warning', danger: 'Danger' }.freeze
+  ```ruby
+  class User < ActiveRecord::Base
+    include Something::Something
 
-  # Associations
-  has_one :life
-  has_many :friends
-  has_many :families
-  belongs_to :mentor
-  belongs_to :team
+    # Constants
+    ERRORS = { warning: 'Warning', danger: 'Danger' }.freeze
 
-  # ActiveRecord Validations
-  validates :name, presence: true
-  validates :mentor_id, presence: true, if: :has_contact_with_mentor?
-  validates :username, uniqueness: true, presence: true
+    # Associations
+    has_one :life
+    has_many :friends
+    has_many :families
+    belongs_to :mentor
+    belongs_to :team
 
-  # Custom Validations
-  validate :username_is_registered
+    # ActiveRecord Validations
+    validates :name, presence: true
+    validates :mentor_id, presence: true, if: :has_contact_with_mentor?
+    validates :username, uniqueness: true, presence: true
 
-  # Rails Delegations
-  delegate :email, to: mentor, prefix: true, allow_nil: true
-  delegate :first_name, to: mentor, prefix: true, allow_nil: true
-  delegate :name, to: mentor, prefix: true, allow_nil: true
+    # Custom Validations
+    validate :username_is_registered
 
-  # attr methods
-  attr_accessor :something
-  attr_writer :something_else
-  attr_reader :something_different
+    # Rails Delegations
+    delegate :email, to: mentor, prefix: true, allow_nil: true
+    delegate :first_name, to: mentor, prefix: true, allow_nil: true
+    delegate :name, to: mentor, prefix: true, allow_nil: true
 
-  # ActiveRecord callbacks
-  before_save :clean_username
-  after_save :send_welcome_pack
+    # attr methods
+    attr_accessor :something
+    attr_writer :something_else
+    attr_reader :something_different
 
-  # class methods
-  def self.i_am_a_class_method
-    puts 'Hello, I am a class method!'
+    # ActiveRecord callbacks
+    before_save :clean_username
+    after_save :send_welcome_pack
+
+    # class methods
+    def self.i_am_a_class_method
+      puts 'Hello, I am a class method!'
+    end
+
+    # Instance methods
+    def i_am_an_instance_method
+      puts 'Hello, I am an instance method!'
+    end
+
+    protected
+
+    def i_am_a_protected_instance_method
+      puts 'Hello, I am a protected instance method!'
+    end
+
+    private
+
+    def i_am_a_private_instance_method
+      puts 'Hello, I am a private instance method!'
+    end
+
+    # Custom validation methods
+    def username_is_registered; end
   end
-
-  # Instance methods
-  def i_am_an_instance_method
-    puts 'Hello, I am an instance method!'
-  end
-
-  protected
-
-  def i_am_a_protected_instance_method
-    puts 'Hello, I am a protected instance method!'
-  end
-
-  private
-
-  def i_am_a_private_instance_method
-    puts 'Hello, I am a private instance method!'
-  end
-
-  # Custom validation methods
-  def username_is_registered; end
-end
-```
+  ```
 
 Routing
 -------
