@@ -2,13 +2,13 @@ Boundless Drop Ruby/Rails Style Guide:
 ======================================
 This is Boundless Drop's Ruby Style Guide.
 
-This was inspired by (bbatsov's)[https://github.com/bbatsov/rails-style-guide] and (Airbnb's)[https://github.com/airbnb/ruby] guides.
+This was inspired by [bbatsov's](https://github.com/bbatsov/rails-style-guide) and [Airbnb's](https://github.com/airbnb/ruby) guides.
 
 This is always going to be a work in progress and it is going to adapt to whatever is better suiting our team in terms of what will achieve better code quality and cleaner code.
 
 Clarity, Readability & Convention:
 ----------------------------------
-- Always use a Linter such as (rubocop)[https://github.com/bbatsov/rubocop].
+- Always use a Linter such as [eubocop](https://github.com/bbatsov/rubocop).
 - Use the Syntastic plugin for vim to work with Rubocop.
 - Method SHOULD NOT be long than 8-9 lines. If they do, then you are doing something wrong.
 - Classes should not be longer than 100-120 lines. If they do, then you are doing something wrong.
@@ -61,7 +61,7 @@ Models:
 - Models are for business logic and data-persistence ONLY!
 - Name models after nouns and not verbs
 - Meaningful but short names
-- Feel free to introduce non ActiveRecord models. If validations are needed, use (ActiveAttr)[https://github.com/cgriego/active_attr] gem.
+- Feel free to introduce non ActiveRecord models. If validations are needed, use [ActiveAttr](https://github.com/cgriego/active_attr) gem.
 
 ```ruby
 class User < ActiveRecord::Base
