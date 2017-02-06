@@ -1,3 +1,16 @@
+# how to use rails structure
+# How to deal with fat models
+# Hash key and value naming
+# Config section
+# how to deal with env variables
+# naming custom validation methods and how to deal with them
+# naming variables and methods
+# Gemfile and locales
+# Null objects
+# Making use of the rails CLI
+# When to use constants
+# FRIDA: mention obvious examples of vulnerability
+
 Boundless Drop Ruby/Rails Style Guide:
 ======================================
 This is Boundless Drop's Ruby Style Guide.
@@ -13,6 +26,7 @@ Clarity, Readability & Convention:
 - Method SHOULD NOT be long than 8-9 lines. If they do, then you are doing something wrong.
 - Classes should not be longer than 100-120 lines. If they do, then you are doing something wrong.
 - Use comments only if absolutely necessary and indent them with one space after the pound sign.
+# integer keys
 - Hashes should always use symbols rather than strings for their keys
 - For active record where querying for an attribute in array pass it a hash instead of writing a string where query
 - Prefer single-quoted strings when you don't need string interpolation or special symbols.
@@ -64,6 +78,7 @@ Models:
 - Feel free to introduce non ActiveRecord models. If validations are needed, use [ActiveAttr](https://github.com/cgriego/active_attr) gem.
 
 The following model structure is to be used in all our models:
+# scopes
 
   ```ruby
   class User < ActiveRecord::Base
