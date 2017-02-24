@@ -167,11 +167,12 @@ I18n
 ```ruby
 # In Models
 I18n.t('translation_key')
+
 # Everywhere else
 t('translation_key')
 ```
 - All translation keys should be added to both en.yml and ar.yml which are locaed in config/locales/ .
-- Translations will only be surrounded by " " if it has ' in it.
+- Translations will only be surrounded by " " if it has a ' in it.
 - Custom validation errors should be written as follows:
 ```ruby
 I18n.t('model_name_errors.translation_key')
@@ -211,5 +212,5 @@ lang:
             attribute: Attribute
             another_one: Another One
 ```
-- Gems translations should be in their own seperate files in the locales directory and should be named as follows: gemname.lang.yml .
+- Gems translations should be in their own separate files in the locales directory and should be named as follows: gemname.lang.yml .
 
