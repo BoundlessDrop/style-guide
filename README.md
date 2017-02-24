@@ -158,6 +158,7 @@ Routing
     end
   end
   ```
+
 I18n
 ----
 - All strings that will be used in views MUST be written as a translation key in I18n translate method.
