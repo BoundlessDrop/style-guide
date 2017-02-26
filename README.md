@@ -177,7 +177,7 @@ I18n
   ```ruby
   I18n.t('model_name_errors.translation_key')
   ```
- - Translations files should be structured as follows:
+- Translations files should be structured as follows:
   ```yaml
   # Indintations are very important so be carefull
   lang:
