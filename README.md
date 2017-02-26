@@ -201,16 +201,16 @@ I18n
       # ActiveRecord Translations
       activerecord:
 
-      # Models Translations
-      models:
-          model_name: Model Name
-          another_model: Another Model
+        # Models Translations
+        models:
+            model_name: Model Name
+            another_model: Another Model
 
-      # Attributes Translations
-      attributes:
-          model_name:
-              attribute: Attribute
-              another_one: Another One
+        # Attributes Translations
+        attributes:
+            model_name:
+                attribute: Attribute
+                another_one: Another One
   ```
 - Gems translations should be in their own separate files in the locales directory and should be named as follows: gemname.lang.yml .
 
