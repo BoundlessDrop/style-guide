@@ -1,4 +1,3 @@
-# how to use rails structure
 # How to deal with fat models
 # Hash key and value naming
 # Config section
@@ -26,7 +25,7 @@ Clarity, Readability & Convention:
 - Method SHOULD NOT be long than 8-9 lines. If they do, then you are doing something wrong.
 - Classes should not be longer than 100-120 lines. If they do, then you are doing something wrong.
 - Use comments only if absolutely necessary and indent them with one space after the pound sign.
-# integer keys
+- DO not use Integers as keys for Hashes.
 - Hashes should always use symbols rather than strings for their keys
 - For active record where querying for an attribute in array pass it a hash instead of writing a string where query
 - Prefer single-quoted strings when you don't need string interpolation or special symbols.
@@ -58,6 +57,7 @@ Clarity, Readability & Convention:
 - Use `each`, not `for`, for iteration.
 - Prefer `private` over `protected` for non-public `attr_reader`s, `attr_writer`s, and `attr_accessor`s.
 
+
 Database level
 --------------
 - Never use #{variable} in any SQL queries for obvious security vulnerability
@@ -78,7 +78,6 @@ Models:
 - Feel free to introduce non ActiveRecord models. If validations are needed, use [ActiveAttr](https://github.com/cgriego/active_attr) gem.
 
 The following model structure is to be used in all our models:
-# scopes
 
   ```ruby
   class User < ActiveRecord::Base
@@ -102,6 +101,9 @@ The following model structure is to be used in all our models:
     # Custom Validations
     validate :username_is_registered
 
+    # Nested associations
+    accepts_nested_attributes_for :something, reject_if: :all_blank, allow_destroy: true
+
     # Rails Delegations
     delegate :email, to: mentor, prefix: true, allow_nil: true
     delegate :first_name, to: mentor, prefix: true, allow_nil: true
@@ -115,6 +117,9 @@ The following model structure is to be used in all our models:
     # ActiveRecord callbacks
     before_save :clean_username
     after_save :send_welcome_pack
+
+    # scopes
+    scope :published, -> { where(published: true) }
 
     # class methods
     def self.i_am_a_class_method
@@ -140,6 +145,43 @@ The following model structure is to be used in all our models:
 
     # Custom validation methods
     def username_is_registered; end
+  end
+  ```
+
+Views:
+------
+- Should contain as little logic as possible
+- Logic should be handled elsewhere, preferably in Helpers.
+
+Controllers:
+------------
+- Receive events from the outside world (usually through views)
+- Interact with the model
+- Displays the appropriate view to the user
+
+The following model structure is to be used in all our controllers:
+
+  ```ruby
+  class UsersController < ApplicationController
+    def index; end
+
+    def show; end
+
+    def new; end
+
+    def create; end
+
+    def edit; end
+
+    def update; end
+
+    def destroy; end
+
+    private
+
+    def user_params
+      params.require(:user).permit(:name, :email)
+    end
   end
   ```
 
@@ -222,3 +264,4 @@ I18n
   ├── paperclip.ar.yml
   └── paperclip.en.yml
   ```
+
