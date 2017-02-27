@@ -230,7 +230,7 @@ I18n
       model_name_errors:
           cant_be_this: "Can't be this"
 
-      # Lists Translations
+      # Constants Translations
       people_categories:
           bad: Bad
           good: Good
