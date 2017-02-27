@@ -28,7 +28,7 @@ Clarity, Readability & Convention:
 - DO not use Integers as keys for Hashes.
 - Hashes should always use symbols rather than strings for their keys
 - For active record where querying for an attribute in array pass it a hash instead of writing a string where query
-- Prefer single-quoted strings when you don't need string interpolation or special symbols.
+- Prefer single-quoted strings when you don't need string interpolation or special symbols such as `'`.
 - Defining  and calling methods should use parenthesis
   ```ruby
   def hello(name)
