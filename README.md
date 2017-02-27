@@ -161,7 +161,7 @@ Routing
 
 I18n
 ----
-- All strings that will be used in views MUST be written as a translation key in I18n translate method.
+- All strings that will be used in views MUST be written as a translation key using I18n's translate method.
 - All translation keys should be in snake_case.
 - We use I18n translate as follows:
   ```ruby
@@ -171,15 +171,14 @@ I18n
   # Everywhere else
   t('translation_key')
   ```
-- All translation keys should be added to both en.yml and ar.yml which are locaed in config/locales/ .
-- Translations will only be surrounded by " " if it has a ' in it.
+- All translation keys should be added to both en.yml and ar.yml which are located in config/locales/ .
 - Custom validation errors should be written as follows:
   ```ruby
   I18n.t('model_name_errors.translation_key')
   ```
 - Translations files should be structured as follows:
   ```yaml
-  # Indintations are very important so be carefull
+  # Indentations are very important so be careful
   lang:
       # Normal Translations
       he_is_very_sabri: He is very Sabri
@@ -191,8 +190,8 @@ I18n
 
       # Lists Translations
       people_categories:
-          good: Good
           bad: Bad
+          good: Good
 
       # Responses Translations
       some_responses:
@@ -203,14 +202,23 @@ I18n
 
         # Models Translations
         models:
-            model_name: Model Name
             another_model: Another Model
+            model_name: Model Name
 
         # Attributes Translations
         attributes:
             model_name:
-                attribute: Attribute
                 another_one: Another One
+                attribute: Attribute
   ```
+- Translations inside each group should be sorted alphabetically.
 - Gems translations should be in their own separate files in the locales directory and should be named as follows: gemname.lang.yml .
+- Directory structure example:
 
+  ```
+  .
+  ├── ar.yml
+  ├── en.yml
+  ├── paperclip.ar.yml
+  └── paperclip.en.yml
+  ```
