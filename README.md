@@ -101,6 +101,9 @@ The following model structure is to be used in all our models:
     # Custom Validations
     validate :username_is_registered
 
+    # Nested associations
+    accepts_nested_attributes_for :something, reject_if: :all_blank, allow_destroy: true
+
     # Rails Delegations
     delegate :email, to: mentor, prefix: true, allow_nil: true
     delegate :first_name, to: mentor, prefix: true, allow_nil: true
