@@ -205,13 +205,14 @@ I18n
 ----
 - All strings that will be used in views MUST be written as a translation key using I18n's translate method.
 - All translation keys should be in snake_case.
+- All translation keys should use symbol syntax and not string syntax
 - We use I18n translate as follows:
   ```ruby
   # In Models
-  I18n.t('translation_key')
+  I18n.t(:translation_key)
 
   # Everywhere else
-  t('translation_key')
+  t(:translation_key)
   ```
 - All translation keys should be added to both en.yml and ar.yml which are located in config/locales/ .
 - Custom validation errors should be written as follows:
