@@ -9,14 +9,15 @@ This is always going to be a work in progress and it is going to adapt to whatev
 Contents:
 ---------
 
-- [Clarity, Readability & Convention]()
-- [Database Level]()
-- [Models]()
-- [Views]()
-- [Controllers]()
-- [Routing]()
-- [I18n]()
-- [Authorization]()
+- [Clarity, Readability & Convention](https://github.com/boundlessdrop/style-guide#clarity-readability--convention)
+- [Database Level](https://github.com/boundlessdrop/style-guide#database-level)
+- [Models](https://github.com/boundlessdrop/style-guide#models)
+- [Views](https://github.com/boundlessdrop/style-guide#views)
+- [Controllers](https://github.com/boundlessdrop/style-guide#controllers)
+- [Routing](https://github.com/boundlessdrop/style-guide#routing)
+- [I18n](https://github.com/boundlessdrop/style-guide#i18n)
+- [Authorization](https://github.com/boundlessdrop/style-guide#authorization-with-cancancan)
+- [TODO](https://github.com/boundlessdrop/style-guide#todo)
 
 Clarity, Readability & Convention:
 ----------------------------------
@@ -322,15 +323,15 @@ Please take a look at the extensive documentation provided by cancancan to get a
 
 
 ## TODO:
-_ How to deal with fat models
-_ Hash key and value naming
-_ Config section
-_ how to deal with env variables
-_ naming custom validation methods and how to deal with them
-_ naming variables and methods
-_ Gemfile and locales
-_ Null objects
-_ Making use of the rails CLI
-_ When to use constants
-_ FRIDA: mention obvious examples of vulnerability
+- How to deal with fat models
+- Hash key and value naming
+- Config section
+- how to deal with env variables
+- naming custom validation methods and how to deal with them
+- naming variables and methods
+- Gemfile and locales
+- Null objects
+- Making use of the rails CLI
+- When to use constants
+- FRIDA: mention obvious examples of vulnerability
 
