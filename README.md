@@ -6,6 +6,18 @@ This was inspired by [bbatsov's](https://github.com/bbatsov/rails-style-guide) a
 
 This is always going to be a work in progress and it is going to adapt to whatever is better suiting our team in terms of what will achieve better code quality and cleaner code.
 
+Contents:
+---------
+
+- [Clarity, Readability & Convention]()
+- [Database Level]()
+- [Models]()
+- [Views]()
+- [Controllers]()
+- [Routing]()
+- [I18n]()
+- [Authorization]()
+
 Clarity, Readability & Convention:
 ----------------------------------
 - Always use a Linter such as [rubocop](https://github.com/bbatsov/rubocop).
@@ -46,7 +58,7 @@ Clarity, Readability & Convention:
 - Prefer `private` over `protected` for non-public `attr_reader`s, `attr_writer`s, and `attr_accessor`s.
 
 
-Database level
+Database level:
 --------------
 - Never use #{variable} in any SQL queries for obvious security vulnerability
 - While using Active Record methods such as `where` do not use `?`. Instead, use named arguements as follows:
@@ -173,7 +185,7 @@ The following model structure is to be used in all our controllers:
   end
   ```
 
-Routing
+Routing:
 -------
 - Avoid the `:except` option in routes.
 - Use the `:only` option to explicitly state exposed routes.
@@ -189,7 +201,7 @@ Routing
   end
   ```
 
-I18n
+I18n:
 ----
 - All strings that will be used in views MUST be written as a translation key using I18n's translate method.
 - All translation keys should be in snake_case.
@@ -254,7 +266,7 @@ I18n
   └── paperclip.en.yml
   ```
 
-Authorization with Cancancan
+Authorization with Cancancan:
 ----------------------------
 In ZenHR we are using the gem [cancancan](https://github.com/CanCanCommunity/cancancan) to handle all authorization related matters.
 
@@ -309,16 +321,16 @@ The load part will give us access to the instance variable and the authorize par
 Please take a look at the extensive documentation provided by cancancan to get a better understanding at how it works.
 
 
-##TODO:
-# How to deal with fat models
-# Hash key and value naming
-# Config section
-# how to deal with env variables
-# naming custom validation methods and how to deal with them
-# naming variables and methods
-# Gemfile and locales
-# Null objects
-# Making use of the rails CLI
-# When to use constants
-# FRIDA: mention obvious examples of vulnerability
+## TODO:
+_ How to deal with fat models
+_ Hash key and value naming
+_ Config section
+_ how to deal with env variables
+_ naming custom validation methods and how to deal with them
+_ naming variables and methods
+_ Gemfile and locales
+_ Null objects
+_ Making use of the rails CLI
+_ When to use constants
+_ FRIDA: mention obvious examples of vulnerability
 
