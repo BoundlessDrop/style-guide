@@ -1,15 +1,3 @@
-# How to deal with fat models
-# Hash key and value naming
-# Config section
-# how to deal with env variables
-# naming custom validation methods and how to deal with them
-# naming variables and methods
-# Gemfile and locales
-# Null objects
-# Making use of the rails CLI
-# When to use constants
-# FRIDA: mention obvious examples of vulnerability
-
 Boundless Drop Ruby/Rails Style Guide:
 ======================================
 This is Boundless Drop's Ruby Style Guide.
@@ -265,4 +253,72 @@ I18n
   ├── paperclip.ar.yml
   └── paperclip.en.yml
   ```
+
+Authorization with Cancancan
+----------------------------
+In ZenHR we are using the gem [cancancan](https://github.com/CanCanCommunity/cancancan) to handle all authorization related matters.
+
+A sample controller without using cancancan looks like so:
+
+```ruby
+class VacationsController < ApplicationController
+  before_action :set_vacations
+
+  def index
+    @vacations = Vacation.all
+  end
+
+  def show
+    @vacation
+  end
+
+  # etc.....
+
+  private
+
+  def set_vacations
+    @vacation = Vacation.find(params[:id])
+  end
+end
+```
+
+As you can see there is no way to authorize different User roles to access/update/destroy the Vacation resources.
+
+In comes cancancan:
+
+
+```ruby
+class VacationsController < ApplicationController
+  load_and_authorize_resource
+
+  def index; end
+
+  def show; end
+end
+```
+
+The `load_and_authorize_resource` callback is provided by the gem and it allows us to have access to the `@vacation` or `@vacations` depending on whether the action was a member ot collection resource.
+Therefore there is no need for `set_vacations` anymore.
+
+The `load_and_authorize_resource` is split into two parts:
+- `load_resource`
+- `authorize_resource`
+
+The load part will give us access to the instance variable and the authorize part will handle the authorization rules from the `ability.rb` file.
+
+Please take a look at the extensive documentation provided by cancancan to get a better understanding at how it works.
+
+
+##TODO:
+# How to deal with fat models
+# Hash key and value naming
+# Config section
+# how to deal with env variables
+# naming custom validation methods and how to deal with them
+# naming variables and methods
+# Gemfile and locales
+# Null objects
+# Making use of the rails CLI
+# When to use constants
+# FRIDA: mention obvious examples of vulnerability
 
