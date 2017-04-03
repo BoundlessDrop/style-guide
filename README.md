@@ -6,18 +6,18 @@ This was inspired by [bbatsov's](https://github.com/bbatsov/rails-style-guide) a
 
 This is always going to be a work in progress and it is going to adapt to whatever is better suiting our team in terms of what will achieve better code quality and cleaner code.
 
-Contents:
----------
+Table of Contents:
+------------------
 
-- [Clarity, Readability & Convention](https://github.com/boundlessdrop/style-guide#clarity-readability--convention)
-- [Database Level](https://github.com/boundlessdrop/style-guide#database-level)
-- [Models](https://github.com/boundlessdrop/style-guide#models)
-- [Views](https://github.com/boundlessdrop/style-guide#views)
-- [Controllers](https://github.com/boundlessdrop/style-guide#controllers)
-- [Routing](https://github.com/boundlessdrop/style-guide#routing)
-- [I18n](https://github.com/boundlessdrop/style-guide#i18n)
-- [Authorization](https://github.com/boundlessdrop/style-guide#authorization-with-cancancan)
-- [TODO](https://github.com/boundlessdrop/style-guide#todo)
+1. [Clarity, Readability & Convention](https://github.com/boundlessdrop/style-guide#clarity-readability--convention)
+2. [Database Level](https://github.com/boundlessdrop/style-guide#database-level)
+3. [Models](https://github.com/boundlessdrop/style-guide#models)
+4. [Views](https://github.com/boundlessdrop/style-guide#views)
+5. [Controllers](https://github.com/boundlessdrop/style-guide#controllers)
+6. [Routing](https://github.com/boundlessdrop/style-guide#routing)
+7. [I18n](https://github.com/boundlessdrop/style-guide#i18n)
+8. [Authorization](https://github.com/boundlessdrop/style-guide#authorization-with-cancancan)
+9. [TODO](https://github.com/boundlessdrop/style-guide#todo)
 
 Clarity, Readability & Convention:
 ----------------------------------
