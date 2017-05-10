@@ -120,7 +120,7 @@ The following model structure is to be used in all our models:
     after_save :send_welcome_pack
 
     # scopes
-    scope :published, -> { where(published: true) }
+    scope :published, (-> { where(published: true) })
 
     # class methods
     def self.i_am_a_class_method
