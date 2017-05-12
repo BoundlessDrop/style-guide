@@ -57,7 +57,7 @@ Clarity, Readability & Convention:
   ```
 - Use `each`, not `for`, for iteration.
 - Prefer `private` over `protected` for non-public `attr_reader`s, `attr_writer`s, and `attr_accessor`s.
-
+- Indenting private and protected sections
 
 Database level:
 --------------
@@ -134,18 +134,18 @@ The following model structure is to be used in all our models:
 
     protected
 
-    def i_am_a_protected_instance_method
-      puts 'Hello, I am a protected instance method!'
-    end
+      def i_am_a_protected_instance_method
+        puts 'Hello, I am a protected instance method!'
+      end
 
     private
 
-    def i_am_a_private_instance_method
-      puts 'Hello, I am a private instance method!'
-    end
+      def i_am_a_private_instance_method
+        puts 'Hello, I am a private instance method!'
+      end
 
-    # Custom validation methods
-    def username_is_registered; end
+      # Custom validation methods
+      def username_is_registered; end
   end
   ```
 
@@ -180,9 +180,9 @@ The following model structure is to be used in all our controllers:
 
     private
 
-    def user_params
-      params.require(:user).permit(:name, :email)
-    end
+      def user_params
+        params.require(:user).permit(:name, :email)
+      end
   end
   ```
 
@@ -206,6 +206,7 @@ I18n:
 ----
 - All strings that will be used in views MUST be written as a translation key using I18n's translate method.
 - All translation keys should be in snake_case.
+- Don't assign I18n.t translation to constants.
 - All translation keys should use symbol syntax and not string syntax
 - We use I18n translate as follows:
   ```ruby
@@ -289,9 +290,9 @@ class VacationsController < ApplicationController
 
   private
 
-  def set_vacations
-    @vacation = Vacation.find(params[:id])
-  end
+    def set_vacations
+      @vacation = Vacation.find(params[:id])
+    end
 end
 ```
 
