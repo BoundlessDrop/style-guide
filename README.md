@@ -23,14 +23,30 @@ Clarity, Readability & Convention:
 ----------------------------------
 - Always use a Linter such as [rubocop](https://github.com/bbatsov/rubocop).
 - Use the Syntastic plugin for vim to work with Rubocop.
-- Method SHOULD NOT be long than 8-9 lines. If they do, then you are doing something wrong.
-- Classes should not be longer than 100-120 lines. If they do, then you are doing something wrong.
+- Method SHOULD NOT be long than 8-9 lines. If they do, then you probably need to consider refactoring.
+- Classes should not be longer than 100-120 lines. If they do, then remember SOLID prenciples and follow best practises.
 - Use comments only if absolutely necessary and indent them with one space after the pound sign.
-- DO not use Integers as keys for Hashes.
+- Do not use Integers as keys for Hashes.
+  ```ruby
+  # Bad
+  bad_hash = { 1: '',
+               2: ''  }
+
+  # Good
+  good_hash = { first_element:  'Something',
+                second_element: 'Something Else' }
+  ```
+
 - Hashes should always use symbols rather than strings for their keys
+  ```ruby
+  hash_example = { first_element:  'Example',
+                   second_element: 'Another Example' }
+  ```
+
 - For active record where querying for an attribute in array pass it a hash instead of writing a string where query
 - Prefer single-quoted strings when you don't need string interpolation or special symbols such as `'`.
-- Defining  and calling methods should use parenthesis
+
+- Defining and calling methods should use parenthesis
   ```ruby
   def hello(name)
     puts "#{name}"
@@ -43,6 +59,7 @@ Clarity, Readability & Convention:
 - Break down long chain method calls for readability
 - Methods that return boolean should end with a “?”
 - Methods that perform some permanent or potentially dangerous change should ending in "!"
+
 - Use Hash params instead of splat operator (*args)
   ```ruby
   def hello(options = {})
@@ -58,6 +75,14 @@ Clarity, Readability & Convention:
 - Use `each`, not `for`, for iteration.
 - Prefer `private` over `protected` for non-public `attr_reader`s, `attr_writer`s, and `attr_accessor`s.
 
+- Naming for methods should identify what it do.
+  ```ruby
+  # Bad
+  def calculation; end
+
+  # Good
+  def calculate_employees_salaries; end
+  ```
 
 Database level:
 --------------
