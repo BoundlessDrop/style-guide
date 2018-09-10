@@ -23,7 +23,7 @@ Clarity, Readability & Convention:
 ----------------------------------
 - Always use a Linter such as [rubocop](https://github.com/bbatsov/rubocop).
 - Use the Syntastic plugin for vim to work with Rubocop.
-- Method SHOULD NOT be long than 8-9 lines. If they do, then you probably need to consider refactoring.
+- Methods should not be long than 8-9 lines. If they do, then you probably need to consider refactoring.
 - Classes should not be longer than 100-120 lines. If they do, then remember SOLID prenciples and follow best practises.
 - Use comments only if absolutely necessary and indent them with one space after the pound sign.
 - Do not use Integers as keys for Hashes.
@@ -86,10 +86,46 @@ Clarity, Readability & Convention:
 - Naming in Iteration should be clear and related to the iterated elements.
   ```ruby
   # Bad
-  @employees.each { |e| ... }
+  def list_employees_locations
+    @employees.each { |e| ... }
+  end
 
   # Good
-  @employees.each { |employee| ... }
+  def list_employees_locations
+    @employees.each { |employee| ... }
+  end
+  ```
+- Indent when as deep as case.
+  ```ruby
+  case organization
+  when 'Akhtaboot'
+    puts 'akhtaboot.com'
+  when 'ZenHR'
+    puts 'zenhr.com'
+  end
+
+  # or
+  workplace = case organization
+              when 'Akhtaboot' then 'Near 5th circle'
+              when 'ZenHR'     then 'Sweifieh'
+  ```
+
+- Align parameters in one line or one for each line.
+  ```ruby
+  def create_financial_list(employee,
+                            branch,
+                            from_date,
+                            to_date)
+    ...
+  end
+
+  ```
+
+- Use spaces around operators; after commas, colons, and semicolons; and around { and before }.
+  ```ruby
+  total = price * rate
+  total > item_value ? 'High Price' : 'Acceptable'
+  ['ZenHR', 'Akhtaboot', 'Cavall', 'Testello'].each { |product| ... }
   ```
 
 Database level:
