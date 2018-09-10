@@ -6,7 +6,7 @@ This was inspired by [bbatsov's](https://github.com/bbatsov/rails-style-guide) a
 
 This is always going to be a work in progress and it is going to adapt to whatever is better suiting our team in terms of what will achieve better code quality and cleaner code.
 
-Table of Contents:
+
 ------------------
 
 1. [Clarity, Readability & Convention](https://github.com/boundlessdrop/style-guide#clarity-readability--convention)
@@ -82,6 +82,14 @@ Clarity, Readability & Convention:
 
   # Good
   def calculate_employees_salaries; end
+  ```
+- Naming in Iteration should be clear and related to the iterated elements.
+  ```ruby
+  # Bad
+  @employees.each { |e| ... }
+
+  # Good
+  @employees.each { |employee| ... }
   ```
 
 Database level:
