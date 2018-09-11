@@ -128,6 +128,55 @@ Clarity, Readability & Convention:
   ['ZenHR', 'Akhtaboot', 'Cavall', 'Testello'].each { |product| ... }
   ```
 
+- Don't include spaces inside block parameter or arrays.
+  ```ruby
+  # Bad
+  @branches_locations.each { | name, location | ... }
+
+  # Good
+  @branches_locations.each { |name, location| ... }
+
+  # Bad
+  [ 'Akhtaboot' , 'ZenHR' , 'Cavall' , 'Testello' ]
+
+  # Good
+  ['Akhtaboot', 'ZenHR', 'Cavall', 'Testello']
+  ```
+
+- Include newline between each method.
+  ```ruby
+  # Bad
+  def list_of_locations; end
+  def list_of_branches; end
+
+  # Good
+  def list_of_locations; end
+
+  def list_of_branches; end
+  ```
+
+- Don't include newlines between areas that have a different indentations.
+  ```ruby
+  # Bad
+  def list_of_active_users
+    
+    if user.active?
+      ...
+    end
+
+    return ... if ...
+
+  end
+
+  # Good
+  def list_of_active_users
+    if user.active?
+      ...
+    end
+    return ... if ...
+  end
+  ```
+
 Database level:
 --------------
 - Never use #{variable} in any SQL queries for obvious security vulnerability
