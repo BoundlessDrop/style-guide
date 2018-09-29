@@ -246,6 +246,37 @@ Models:
 - Models are for business logic and data-persistence ONLY!
 - Name models after nouns and not verbs
 - Meaningful but short names
+- When defining model scopes, use a lambda to wrap the relation
+```ruby
+# Bad
+scope :published, where(published: true)
+
+# Good
+scope :published, (-> { where(published: true) })
+```
+- Avoid return when it's not required
+```ruby
+# Bad
+def list_employees_transactions
+  return branch.employees.transactions
+end
+
+# Good
+def list_employees_transactions
+  branch.employees.transactions
+end
+```
+- Use :: only to reference to constants, classes, modules or constructors.
+```ruby
+# Bad
+Transaction::any_method
+transaction_object::list_branch_transactions
+
+# Good
+Transaction.call_a_method
+BranchTransaction::TRANSACTION_STATUSES
+transaction_object.list_branch_transactions
+```
 - Feel free to introduce non ActiveRecord models. If validations are needed, use [ActiveAttr](https://github.com/cgriego/active_attr) gem.
 
 The following model structure is to be used in all our models:
