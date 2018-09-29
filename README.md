@@ -246,6 +246,7 @@ Models:
 - Models are for business logic and data-persistence ONLY!
 - Name models after nouns and not verbs
 - Meaningful but short names
+- Don't make it Fat, Consider Concerns & Design Patterns
 - When defining model scopes, use a lambda to wrap the relation
 ```ruby
 # Bad
@@ -354,7 +355,27 @@ Views:
 ------
 - Should contain as little logic as possible
 - Logic should be handled elsewhere, preferably in Helpers.
+```ruby
+# Bad
+= f.select :user_id, options_for_select(@site.users.map { |user| [user.name, user.id]}), ...
 
+# Good
+[View Level]
+= f.select :user_id, options_for_select(active_site_users)
+[Helper Level]
+def active_site_users
+  ...
+end
+``` 
+- Don't use static translations, Define a translation key into our locales and call it.
+```ruby
+# Bad
+= link_to t('create'), some_where_path, ...
+= link_to 'Create', some_where_path, ...
+
+# Good
+= link_to t(:create), some_where_path, ...
+```
 Controllers:
 ------------
 - Receive events from the outside world (usually through views)
