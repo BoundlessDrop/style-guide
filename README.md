@@ -100,7 +100,17 @@ Clarity, Readability & Convention:
   ```
 - Break down long chain method calls for readability
 - Methods that return boolean should end with a “?”
+```ruby
+def able_to_request_transaction?
+  ...
+end
+```
 - Methods that perform some permanent or potentially dangerous change should ending in "!"
+```ruby
+def send_urgent_request!
+  ...
+end
+```
 
 - Use Hash params instead of splat operator (*args)
   ```ruby
@@ -223,13 +233,13 @@ Database level:
 --------------
 - Never use #{variable} in any SQL queries for obvious security vulnerability
 - While using Active Record methods such as `where` do not use `?`. Instead, use named arguements as follows:
-  ```ruby
-    # bad
-    branch.taxes.where('start_date <= ? AND (end_date > ? OR end_date IS NULL)', date, date)
+```ruby
+  # bad
+  branch.taxes.where('start_date <= ? AND (end_date > ? OR end_date IS NULL)', date, date)
 
-    # good
-    branch.taxes.where('start_date <= :date AND (end_date > :date OR end_date IS NULL)', { date: date })
-  ```
+  # good
+  branch.taxes.where('start_date <= :date AND (end_date > :date OR end_date IS NULL)', { date: date })
+```
 
 Models:
 ---------------------------
