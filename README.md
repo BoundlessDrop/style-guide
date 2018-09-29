@@ -429,6 +429,7 @@ Routing:
 I18n:
 ----
 - All strings that will be used in views MUST be written as a translation key using I18n's translate method.
+- Translation keys needs to be added based on Alphabetical order.
 - All translation keys should be in snake_case.
 - All translation keys should use symbol syntax and not string syntax
 - We use I18n translate as follows:
