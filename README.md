@@ -17,7 +17,8 @@ This is always going to be a work in progress and it is going to adapt to whatev
 6. [Routing](https://github.com/boundlessdrop/style-guide#routing)
 7. [I18n](https://github.com/boundlessdrop/style-guide#i18n)
 8. [Authorization](https://github.com/boundlessdrop/style-guide#authorization-with-cancancan)
-9. [TODO](https://github.com/boundlessdrop/style-guide#todo)
+9. [Gemfile](https://github.com/boundlessdrop/style-guide#gemfile)
+10. [TODO](https://github.com/boundlessdrop/style-guide#todo)
 
 Clarity, Readability & Convention:
 ----------------------------------
@@ -366,7 +367,7 @@ Views:
 def active_site_users
   ...
 end
-``` 
+```
 - Don't use static translations, Define a translation key into our locales and call it.
 ```ruby
 # Bad
@@ -381,8 +382,9 @@ Controllers:
 - Receive events from the outside world (usually through views)
 - Interact with the model
 - Displays the appropriate view to the user
+- When it's becoming Fat, Consider using Concern Or Services.
 
-The following model structure is to be used in all our controllers:
+The following structure is to be used in all our controllers:
 
   ```ruby
   class UsersController < ApplicationController
@@ -543,6 +545,27 @@ The load part will give us access to the instance variable and the authorize par
 
 Please take a look at the extensive documentation provided by cancancan to get a better understanding at how it works.
 
+Gemfile:
+----------------------------
+- Always add necessary gems in Alphabetical order
+- Group gems if it's required only in a level of use.
+```ruby
+group :development do
+  gem 'better_errors'
+  gem 'bullet'
+  gem 'rubocop'
+  gem 'spring'
+end
+
+group :development, :test do
+  gem 'byebug', platform: :mri
+  gem 'factory_bot_rails'
+  gem 'faker', '~> 1.7.3'
+  gem 'guard'
+  gem 'guard-rspec', require: false
+  gem 'guard-rubocop'
+end
+```
 
 ## TODO:
 - How to deal with fat models
@@ -551,8 +574,6 @@ Please take a look at the extensive documentation provided by cancancan to get a
 - how to deal with env variables
 - naming custom validation methods and how to deal with them
 - naming variables and methods
-- Gemfile and locales
 - Null objects
 - Making use of the rails CLI
 - When to use constants
-- FRIDA: mention obvious examples of vulnerability
