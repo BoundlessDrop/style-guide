@@ -26,6 +26,34 @@ Clarity, Readability & Convention:
 - Methods should not be long than 8-9 lines. If they do, then you probably need to consider refactoring.
 - Classes should not be longer than 100-120 lines. If they do, then remember SOLID prenciples and follow best practises.
 - Use comments only if absolutely necessary and indent them with one space after the pound sign.
+  ```ruby
+  # Bad
+  def list_all_results
+    #get results
+    Result.all
+  end
+
+  def initialize(options)
+    #employee id required if only employee process
+    @from_date = options[:from_date]
+    @to_date   = options[:to_date]
+    @employee_id = options[:employee_id]
+  end
+
+  # Good
+  def list_all_results
+    # Return ZERO is required if no params passed
+    return 0 unless params.present?
+    ...
+  end
+
+  def initialize(options)
+    @from_date = options[:from_date]
+    @to_date   = options[:to_date]
+    @employee_id = options[:employee_id] # Required for employee transaction only.
+  end
+
+  ```
 - Do not use Integers as keys for Hashes.
   ```ruby
   # Bad
@@ -56,6 +84,20 @@ Clarity, Readability & Convention:
   ```
 - Always use &&, ||, ! instead of language words like and, or, not
 - Use CamelCase for classes and modules, snake_case for variables and methods, SCREAMING_SNAKE_CASE for constants.
+  ```ruby
+  # Good
+  module ApplicableTransaction
+    ...
+  end
+
+  class EmployeeTransaction < ActiveRecord::Base
+    # Constants
+    EMPLOYEE_STATUS = %i[Pending Activated Banned].freeze
+
+    # Methods
+    def list_employee_transaction; end
+  end
+  ```
 - Break down long chain method calls for readability
 - Methods that return boolean should end with a “?”
 - Methods that perform some permanent or potentially dangerous change should ending in "!"
@@ -159,7 +201,7 @@ Clarity, Readability & Convention:
   ```ruby
   # Bad
   def list_of_active_users
-    
+
     if user.active?
       ...
     end
@@ -452,4 +494,3 @@ Please take a look at the extensive documentation provided by cancancan to get a
 - Making use of the rails CLI
 - When to use constants
 - FRIDA: mention obvious examples of vulnerability
-
